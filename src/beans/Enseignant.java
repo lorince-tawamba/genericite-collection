@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Objects;
+
 public class Enseignant {
 
     private String matricule;
@@ -32,5 +34,18 @@ public class Enseignant {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Enseignant that = (Enseignant) o;
+        return Objects.equals(matricule, that.matricule) && Objects.equals(nom, that.nom) && Objects.equals(tel, that.tel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(matricule, nom, tel);
     }
 }
